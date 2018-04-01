@@ -1,0 +1,30 @@
+<h2> Pessoas </h2>
+<p>
+  <a routerLink="/pessoa/" class="btn btn-primary"> Adicionar</a>
+</p>
+<button (click)="exportToExcel()" class="btn btn-primary">Exportar</button>
+
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>Nome</th>
+    <th>Dt. Nascimento</th>
+    <th>Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pessoa of pessoas">
+    <td>{{pessoa.nome}}</td>
+    <td>{{pessoa.dtNascimento | date: 'dd-MM-yyyy'}}</td>
+    <td>
+      <a routerLink="/pessoa/{{pessoa.id}}">
+        <i style="cursor:pointer">ALTERAR</i>
+      </a>
+      |
+      <a routerLink="/">
+        <i (click)="deletePessoa(pessoa)" style="cursor:pointer">REMOVER</i>
+      </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
