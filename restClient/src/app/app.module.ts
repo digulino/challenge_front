@@ -4,7 +4,7 @@ import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
-import {HttpModule} from "@angular/http";
+import {HttpClientModule} from "@angular/common/http";
 
 import {PessoaListComponent} from 'app/components/pessoa-list/pessoa-list.component';
 import {PessoaFormComponent} from "./components/pessoa-form/pessoa-form.component";
@@ -13,7 +13,7 @@ import {PessoaFormComponent} from "./components/pessoa-form/pessoa-form.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule
   ],

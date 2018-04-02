@@ -63,20 +63,11 @@ export class PessoaFormComponent implements OnInit {
   }
 
   save(model: Pessoa) {
-    if (this.id == undefined) {
-      this._service.createPessoa(model)
-        .subscribe(pessoa => {
-          this.router.navigate(['/']);
-        }, error => {
-          console.error(error);
-        })
-    } else {
-      this._service.updatePessoa(model)
-        .subscribe(pessoa => {
-          this.router.navigate(['/']);
-        }, error => {
-          console.error(error);
-        })
-    }
+    this._service.createOrUpdatePessoa(model)
+      .subscribe(pessoa => {
+        this.router.navigate(['/']);
+      }, error => {
+        console.error(error);
+      })
   }
 }
