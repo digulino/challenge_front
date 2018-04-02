@@ -39,27 +39,24 @@ export class PessoaFormComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params["id"];
+      if (this.id == undefined) {
+        this.titulo = "Novo registro"
+      } else {
+        this.titulo = "Alterar registro"
+      }
+      if (!this.id) {
+        return;
+      }
+      this._service.getPessoa(this.id)
+        .subscribe(pessoa => {
+          this.pessoa = pessoa;
+          if (this.id > 0) {
+            this.dateStr = this.datePipe.transform(pessoa.dtNascimento, 'dd/MM/yyyy');
+            //TODO ... forma de carregar corretamente a data de nascimento no respectivo editor
+            (<FormGroup>this.pessoaForm).setValue(pessoa, {onlySelf: false});
+          }
+        })
     });
-
-    if (this.id == undefined) {
-      this.titulo = "Novo registro"
-    } else {
-      this.titulo = "Alterar registro"
-    }
-
-    if (!this.id) {
-      return;
-    }
-
-    this._service.getPessoa(this.id)
-      .subscribe(pessoa => {
-        this.pessoa = pessoa;
-        if (this.id > 0) {
-          this.dateStr = this.datePipe.transform(pessoa.dtNascimento, 'dd/MM/yyyy');
-          //TODO ... forma de carregar corretamente a data de nascimento no respectivo editor
-          (<FormGroup>this.pessoaForm).setValue(pessoa, {onlySelf: false});
-        }
-      })
   }
 
   save(model: Pessoa) {
