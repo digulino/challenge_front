@@ -1,6 +1,5 @@
 <div class="container-fluid">
   <h3> {{titulo}}</h3>
-  {{ dateStr }}
   <div class="row">
     <div class="col-md-6 well">
       <form [formGroup]="pessoaForm" novalidate (ngSubmit)="save(pessoaForm.value,pessoaForm.valid)">

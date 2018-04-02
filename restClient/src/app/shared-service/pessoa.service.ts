@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpResponse} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {Pessoa} from "../pessoa";
 
@@ -23,13 +23,13 @@ export class PessoaService {
       .catch(this.errorHandler);
   }
 
-  getPessoa(id: Number) {
+  getPessoa(id: number) {
     return this._http.get(this.baseUrl + '/pessoa/' + id, this.options)
       .map((response: any) => response)
       .catch(this.errorHandler);
   }
 
-  deletePessoa(id: Number) {
+  deletePessoa(id: number) {
     return this._http.delete(this.baseUrl + '/pessoa/' + id, this.options)
       .map((response: any) => response)
       .catch(this.errorHandler);

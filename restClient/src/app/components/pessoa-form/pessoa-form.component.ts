@@ -15,7 +15,7 @@ import {DatePipe} from "@angular/common";
 export class PessoaFormComponent implements OnInit {
 
   public pessoaForm: FormGroup;
-  public id: Number;
+  public id: number;
   public titulo: String;
   public pessoa = new Pessoa(); //model utilizado para adicionar e alterar
 
@@ -52,7 +52,6 @@ export class PessoaFormComponent implements OnInit {
           this.pessoa = pessoa;
           if (this.id > 0) {
             this.dateStr = this.datePipe.transform(pessoa.dtNascimento, 'dd/MM/yyyy');
-            //TODO ... forma de carregar corretamente a data de nascimento no respectivo editor
             (<FormGroup>this.pessoaForm).setValue(pessoa, {onlySelf: false});
           }
         })

@@ -1,5 +1,5 @@
 export class Pessoa {
-  id: Number;
+  id: number;
   nome: string;
   dtNascimento: Date;
 }
